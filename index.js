@@ -31,3 +31,6 @@ res.status(200).send({message: resultado})
 app.listen(3000,() => {
     console.log("Servidor ouvindo na porta 3000")
 })
+
+
+
