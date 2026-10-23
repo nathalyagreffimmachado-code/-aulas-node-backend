@@ -1,5 +1,4 @@
-import RepositoryCarro from '../repository/carro.js'
- 
+import carroRepository from "../repository/carro.js";
 class ServiceCarro {
  
     // Core- Regra de Negocio

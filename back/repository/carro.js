@@ -1,6 +1,5 @@
 import carro from '../model/carro.js'
  
-// INSERT INTO carros (marca, ano) VALUES ("FIAT", 1998)
 class RepositoryCarro {
    
     async find() {

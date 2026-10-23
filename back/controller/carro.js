@@ -1,11 +1,11 @@
-import ServiceUsuario from '../service/usuario.js'
+
  
-class ControllerUsuario {
+class ControllerCarro {
     // Recebimento e a Saida das info
     async Buscar(_, res) {  
         try {
-            const usuarios = await ServiceUsuario.Buscar()
-            res.status(200).send({ mensagem: usuarios })
+            const carros = await ServiceCarro.Buscar()
+            res.status(200).send({ mensagem: carros })
         } catch (error) {
             res.status(500).send({
                 mensagem: error.message
@@ -17,9 +17,9 @@ class ControllerUsuario {
         try {
             const id = req.params.id
  
-            const usuario = await ServiceUsuario.Detalhe(id)
+            const carro = await ServiceCarro.Detalhe(id)
  
-            res.status(200).send({ mensagem: usuario })
+            res.status(200).send({ mensagem: carro })
         } catch (error) {
             res.status(500).send({
                 mensagem: error.message
@@ -29,9 +29,9 @@ class ControllerUsuario {
  
     async Criar(req, res) {
         try {
-            const { email, senha } = req.body
+            const { marca, ano } = req.body
  
-            await ServiceUsuario.Criar(email, senha)
+            await ServiceCarro.Criar(marca, ano)
            
             res.status(201).send({ mensagem: "Cadastrado com sucesso" })
         } catch (error) {
@@ -43,10 +43,10 @@ class ControllerUsuario {
  
     async Alterar(req, res) {
         try {
-            const { email, senha } = req.body
+            const { marca, ano } = req.body
             const id = req.params.id
  
-            await ServiceUsuario.Alterar(id, email, senha)
+            await ServiceCarro.Alterar(id, marca, ano)
            
             res.status(201).send({ mensagem: "Cadastrado com sucesso" })
         } catch (error) {
@@ -60,7 +60,7 @@ class ControllerUsuario {
         try {
             const identificador = req.params.id
  
-            await ServiceUsuario.Deletar(identificador)
+            await ServiceCarro.Deletar(identificador)
  
             res.status(204).send({ mensagem: "Deletado" })
         } catch (error) {
@@ -70,21 +70,6 @@ class ControllerUsuario {
             })
         }
     }
-
-    async Login(req,res) {
-        try {
-            const {email,senha} = req.body
-            const token = await ServiceUsuario.Login(email,senha)
-            res.status(200).send({
-                token
-            })
-        } catch (error) {
-            res.status(500).send({
-                mensagem : error.message 
-            })
-            
-        }
-    }
 }
  
-export default new ControllerUsuario()
+export default new ControllerCarro()

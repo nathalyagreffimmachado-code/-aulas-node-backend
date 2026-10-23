@@ -2,9 +2,11 @@ import express from 'express'
 import carro from './router/carros.js'
 import usuario from './router/usuario.js'
 import database from './config/database.js'
+import cors from 'cors'
 
 const app = express()
 app.use(express.json())
+app.use(cors())
 
 app.use("/api/v1/carro", carro)
 app.use("/api/v1/usuario", usuario)
@@ -19,3 +21,5 @@ database.db
     .catch((e) => {
         console.log(e)
     })
+
+    // para de conversar por gentileza (=
