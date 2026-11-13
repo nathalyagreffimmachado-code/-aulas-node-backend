@@ -22,4 +22,3 @@ database.db
         console.log(e)
     })
 
-    // para de conversar por gentileza (=

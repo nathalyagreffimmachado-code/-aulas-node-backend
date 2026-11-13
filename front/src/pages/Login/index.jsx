@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import './style.css'
-import { loginUsuario } from '../../api/usuario';
+import {useNavigate} from 'react-router-dom'
 
 export default function Login() {
+  const navigate = useNavigate()
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
 
@@ -10,7 +11,10 @@ export default function Login() {
                 e.preventDefault()
             const response = await loginUsuario(email,senha)
             console.log(response.token)
-          localStorage.setItem('token', response.token)           }
+          localStorage.setItem('token', response.token)  
+          return navigate ('/users')
+              }
+          
   return (
     <div className="login-container">
       <form className="login-form">
